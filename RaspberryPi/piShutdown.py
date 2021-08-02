@@ -1,4 +1,4 @@
-# code from https://core-electronics.com.au/tutorials/how-to-make-a-safe-shutdown-button-for-raspberry-pi.html
+# -*- coding: utf-8 -*-
 
 from gpiozero import Button #import button from the Pi GPIO library
 import time # import time functions
@@ -12,3 +12,5 @@ while True: #infinite loop
         if stopButton.is_pressed: #check if the user let go of the button
             os.system("shutdown now -h") #shut down the Pi -h is or -r will reset
     time.sleep(1) # wait to loop again so we don’t use the processor too much.
+
+# code from https://core-electronics.com.au/tutorials/how-to-make-a-safe-shutdown-button-for-raspberry-pi.html
