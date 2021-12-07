@@ -14,14 +14,14 @@ While ($choice -ne 1)
     if ($ps)
     {
         & 'pssuspend64.exe' -nobanner "$ps"
-        "RDR2 Paused"
+        "$(Get-Date -Format "yyyy-MM-dd HH:mm:ss") - RDR2 Paused"
         Start-Sleep -Seconds $delay
         & 'pssuspend64.exe' -r -nobanner "$ps"
-        "RDR2 Resumed"
+        "$(Get-Date -Format "yyyy-MM-dd HH:mm:ss") - RDR2 Resumed"
     }
 
     # else ignore
-    else {"RDR2 Not Running"}
+    else {"$(Get-Date -Format "yyyy-MM-dd HH:mm:ss") - RDR2 Not Running"}
 
     # prompt for rerun with a choice
     $title = 'Would you like to rerun?'
