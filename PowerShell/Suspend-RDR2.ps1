@@ -1,18 +1,28 @@
-# Requires PSTools to work. https://docs.microsoft.com/en-us/sysinternals/downloads/pstools
-# Make sure you put the PSTools into Path
-# Create a desktop shortcut using the below:
-# powershell.exe -command "Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest 'https://raw.githubusercontent.com/nomadtales/DirtyScripting/master/PowerShell/Suspend-RDR2.ps1').Content))"
+## Variables
+$delay = 10
 
-$ps = (Get-Process -Name RDR2 -ErrorAction SilentlyContinue).Id
-
-If ($ps)
+While ($choice -ne 1)
 {
-    & 'pssuspend64.exe' -nobanner "$ps"
-    "RDR2 Paused"
-    Start-Sleep -Seconds 7
-    & 'pssuspend64.exe' -r -nobanner "$ps"
-    "RDR2 Resumed"
-}
-Else {"RDR2 Not Running"}
+    Clear-Host
 
-Start-Sleep -Seconds 10
+    $ps = (Get-Process -Name RDR2 -ErrorAction SilentlyContinue).Id
+
+    if ($ps)
+    {
+        & 'pssuspend64.exe' -nobanner "$ps"
+        "RDR2 Paused"
+        Start-Sleep -Seconds $delay
+        & 'pssuspend64.exe' -r -nobanner "$ps"
+        "RDR2 Resumed"
+    }
+
+    else {"RDR2 Not Running"}
+
+    $title = 'Would you like to rerun?'
+    $rerun = New-Object System.Management.Automation.Host.ChoiceDescription '&Rerun','Rerun the script'
+    $exit = New-Object System.Management.Automation.Host.ChoiceDescription '&Exit','Aborts the script'
+    $options = [System.Management.Automation.Host.ChoiceDescription[]] ($rerun,$exit)
+ 
+    $choice = $host.ui.PromptForChoice($title,$null,$options,0)
+    
+} # End While
