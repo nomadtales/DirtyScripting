@@ -1,12 +1,16 @@
 ## Variables
 $delay = 10
 
+# Create a loop to allow for rerunning
 While ($choice -ne 1)
 {
+    # Clear the PS Window
     Clear-Host
 
+    # Grab the process id of the RDR2 process
     $ps = (Get-Process -Name RDR2 -ErrorAction SilentlyContinue).Id
 
+    # Suspend for delay time if process is running
     if ($ps)
     {
         & 'pssuspend64.exe' -nobanner "$ps"
@@ -16,8 +20,10 @@ While ($choice -ne 1)
         "RDR2 Resumed"
     }
 
+    # else ignore
     else {"RDR2 Not Running"}
 
+    # prompt for rerun with a choice
     $title = 'Would you like to rerun?'
     $rerun = New-Object System.Management.Automation.Host.ChoiceDescription '&Rerun','Rerun the script'
     $exit = New-Object System.Management.Automation.Host.ChoiceDescription '&Exit','Aborts the script'
