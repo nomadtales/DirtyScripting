@@ -8,6 +8,6 @@ Quick script to pause and restart Red Dead Redemption 2 process on PC. Specifica
 
 ## Setup
 1. Create a desktop shortcut.
-2. Change PowerShell Set-ExecutionPolicy to RemoteSigned.
-3. Add the following to the "Type the location of the item" box: `powershell.exe -command "Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest 'https://raw.githubusercontent.com/nomadtales/DirtyScripting/master/PowerShell/Suspend-RDR2.ps1').Content))"`
+2. Change PowerShell Execution Policy if not previously done, by starting PowerShell as an Administrator and using `Set-ExecutionPolicy Bypass`.
+3. Add the following to the "Type the location of the item" box: `powershell.exe -command "Invoke-Command -ScriptBlock ([ScriptBlock]::Create((Invoke-WebRequest 'https://raw.githubusercontent.com/nomadtales/DirtyScripting/master/PowerShell/Suspend-RDR2.ps1').Content))"`.
 4. Call the Shortcut "RDR2 Suspend" and click Finish.
