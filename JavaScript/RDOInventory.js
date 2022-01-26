@@ -139,7 +139,7 @@ const RDOInventory = {
   
         json.items.forEach(item => {
           
-          if (item.slotid != "1084182731") return;
+          //if (item.slotid != "1084182731") return;
   
           if (RDOInventory.Items.find(_item => _item.itemid == item.itemid)) return;
   
