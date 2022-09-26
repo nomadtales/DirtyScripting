@@ -152,7 +152,7 @@ const RDOInventory = {
           }
   
           let _item = _items[0];
-          RDOInventory.Items.push({ itemid: _item.itemid, quantity: _item.quantity })
+          RDOInventory.Items.push({ name: _item.name, slotid: _item.slotid, itemid: _item.itemid, quantity: _item.quantity })
         });
   
         RDOInventory.download(`rdo-character-${RDOInventory.Platform}-${new Date().toISOString()}.json`, JSON.stringify(RDOInventory.Items));
