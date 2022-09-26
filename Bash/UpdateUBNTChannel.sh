@@ -28,6 +28,8 @@ echo $(date +"%Y%m%d-%H%M%S") "DFS Channel available (again), SWITCHING"
 
 outputc=$(ssh $user@$ip -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa 'iwconfig ath0 freq '$freq)
 
+echo $outputc
+
 exit 1
 
 else
