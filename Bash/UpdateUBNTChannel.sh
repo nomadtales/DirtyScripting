@@ -3,7 +3,7 @@ ip="192.168.1.1"
 freq="5.490G"
 
 
-output=$(ssh $user@$ip -o HostKeyAlgorithms=+ssh-rsa 'iwconfig ath0 | grep -wo Frequency:5.675 | wc -l')
+output=$(ssh $user@$ip -o HostKeyAlgorithms=+ssh-rsa 'iwconfig ath0 | grep -wo Frequency:$freq | wc -l')
 
 if [ $output -eq 0 ]
 
