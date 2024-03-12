@@ -8,5 +8,7 @@ exited=($(docker container list --filter "label=docker-volume-backup.stop-during
 # loop through the containers and start
 for i in "${exited[@]}"
 do
-    echo "$i"
+    echo `date +"%Y-%m-%d %T"` - Restarting "$i"
+    docker container start "$i"
+    sleep 1
 done
